@@ -39,21 +39,38 @@ jobs:
             -e PORT=9100 \
             xream/script-hub:latest
           
-          # 等待服务启动
+          # 等待服务完全启动 (增加等待时间和更严格的检查)
           echo "⏳ 等待 Script-Hub 启动..."
-          for i in $(seq 1 30); do
-            if curl -s http://127.0.0.1:9100/ > /dev/null 2>&1; then
+          sleep 10
+          for i in $(seq 1 20); do
+            if curl -s http://127.0.0.1:9100/ | grep -q "Script Hub"; then
               echo "✅ Script-Hub 已就绪"
               break
             fi
-            sleep 2
+            echo "  等待中... ($i/20)"
+            sleep 3
           done
+          
+          # 额外等待确保服务完全就绪
+          sleep 5
+          echo "✅ 开始转换"
       
       - name: 🔄 转换插件
         env:
           SCRIPT_HUB_URL: 'http://127.0.0.1:9100'
         run: |
           cd ${{ github.workspace }}
+          
+          # 健康检查: 测试一次转换
+          echo "🔍 健康检查: 测试转换功能..."
+          TEST_RESULT=$(curl -s "http://127.0.0.1:9100/file/_start_/https://kelee.one/Tool/Loon/Lpx/BlockAdvertisers.lpx/_end_/test.sgmodule?type=loon-plugin&target=surge-module" | head -5)
+          if echo "$TEST_RESULT" | grep -q "#!name"; then
+            echo "✅ Script-Hub 转换功能正常"
+          else
+            echo "❌ Script-Hub 转换功能异常，响应: $TEST_RESULT"
+            exit 1
+          fi
+          
           python scripts/convert.py
       
       - name: 📊 检查变更

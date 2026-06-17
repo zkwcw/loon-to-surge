@@ -19,8 +19,8 @@ def sanitize_filename(name: str) -> str:
     """将中文名称转为安全的文件名"""
     return re.sub(r'[^\w\-]', '_', name) + ".sgmodule"
 
-def convert_plugin(name: str, url: str):
-    """调用 Script-Hub API 转换单个插件"""
+def convert_plugin(name: str, url: str, max_retries: int = 3):
+    """调用 Script-Hub API 转换单个插件，带重试"""
     filename = sanitize_filename(name)
     api_url = f"{SCRIPT_HUB_URL}/file/_start_/{url}/_end_/{filename}"
     params = {
@@ -28,16 +28,26 @@ def convert_plugin(name: str, url: str):
         "target": "surge-module"
     }
     
-    try:
-        resp = requests.get(api_url, params=params, timeout=30)
-        if resp.status_code == 200 and len(resp.text) > 50:
-            return resp.text
-        else:
-            print(f"  ⚠️ 转换失败: HTTP {resp.status_code}, 长度 {len(resp.text)}")
+    for attempt in range(max_retries):
+        try:
+            resp = requests.get(api_url, params=params, timeout=60)
+            if resp.status_code == 200 and len(resp.text) > 50:
+                return resp.text
+            else:
+                if attempt < max_retries - 1:
+                    print(f"  ⚠️ HTTP {resp.status_code}, 重试 {attempt + 2}/{max_retries}...")
+                    time.sleep(3 * (attempt + 1))
+                    continue
+                print(f"  ⚠️ 转换失败: HTTP {resp.status_code}, 响应: {resp.text[:100]}")
+                return None
+        except Exception as e:
+            if attempt < max_retries - 1:
+                print(f"  ⚠️ 请求错误, 重试 {attempt + 2}/{max_retries}...")
+                time.sleep(3 * (attempt + 1))
+                continue
+            print(f"  ❌ 请求错误: {e}")
             return None
-    except Exception as e:
-        print(f"  ❌ 请求错误: {e}")
-        return None
+    return None
 
 def main():
     # 读取配置
