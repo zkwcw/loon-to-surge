@@ -78,7 +78,7 @@ plugins:
     url: https://kelee.one/Tool/Loon/Lpx/LuckinCoffee_remove_ads.lpx
 
   # ========== 其他 ==========
-  - name: 虎牙(河马)去广告
+  - name: 盒马去广告
     url: https://kelee.one/Tool/Loon/Lpx/MrHema_remove_ads.lpx
     
   - name: 酷安去广告
