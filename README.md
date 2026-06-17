@@ -46,9 +46,6 @@
 ### 微信小程序去广告
 [安装链接](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/微信小程序去广告.sgmodule)
 
-### 抖音_香港版_去广告
-[安装链接](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/抖音_香港版_去广告.sgmodule)
-
 ### 淘宝去广告
 [安装链接](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/淘宝去广告.sgmodule)
 

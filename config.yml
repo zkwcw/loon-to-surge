@@ -40,8 +40,7 @@ plugins:
   - name: YouTube去广告
     url: https://kelee.one/Tool/Loon/Lpx/YouTube_remove_ads.lpx
     
-  - name: 抖音(香港版)去广告
-    url: https://kelee.one/Tool/Loon/Lpx/HKDouYin_remove_ads.lpx
+
 
   # ========== 购物生活 ==========
   - name: 淘宝去广告
