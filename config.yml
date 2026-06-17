@@ -1,0 +1,91 @@
+# 可莉 Loon 插件列表 — 自动转换为 Surge 模块
+# 格式: name: 显示名称, url: Loon 插件地址
+# 每天凌晨 2 点 (UTC+8) 自动更新
+
+plugins:
+  # ========== 基础工具 ==========
+  - name: 广告平台拦截器
+    url: https://kelee.one/Tool/Loon/Lpx/BlockAdvertisers.lpx
+    
+  - name: 可莉广告过滤器
+    url: https://kelee.one/Tool/Loon/Lpx/Remove_ads_by_keli.lpx
+    
+  - name: HTTPDNS拦截器
+    url: https://kelee.one/Tool/Loon/Lpx/Block_HTTPDNS.lpx
+    
+  - name: DNS防泄露
+    url: https://kelee.one/Tool/Loon/Lpx/Prevent_DNS_Leaks.lpx
+    
+  - name: Google增强
+    url: https://kelee.one/Tool/Loon/Lpx/Google.lpx
+
+  # ========== 社交通讯 ==========
+  - name: 微信公众号去广告
+    url: https://kelee.one/Tool/Loon/Lpx/Weixin_Official_Accounts_remove_ads.lpx
+    
+  - name: 微信小程序去广告
+    url: https://kelee.one/Tool/Loon/Lpx/WexinMiniPrograms_Remove_ads.lpx
+    
+  - name: 微信外部链接解锁
+    url: https://kelee.one/Tool/Loon/Lpx/Weixin_external_links_unlock.lpx
+    
+  - name: QQ重定向
+    url: https://kelee.one/Tool/Loon/Lpx/QQ_Redirect.lpx
+    
+  - name: 知乎去广告
+    url: https://kelee.one/Tool/Loon/Lpx/Zhihu_remove_ads.lpx
+    
+  - name: 小红书去广告
+    url: https://kelee.one/Tool/Loon/Lpx/RedPaper_remove_ads.lpx
+
+  # ========== 视频娱乐 ==========
+  - name: YouTube去广告
+    url: https://kelee.one/Tool/Loon/Lpx/YouTube_remove_ads.lpx
+    
+  - name: 抖音(香港版)去广告
+    url: https://kelee.one/Tool/Loon/Lpx/HKDouYin_remove_ads.lpx
+
+  # ========== 购物生活 ==========
+  - name: 淘宝去广告
+    url: https://kelee.one/Tool/Loon/Lpx/Taobao_remove_ads.lpx
+    
+  - name: 京东去广告
+    url: https://kelee.one/Tool/Loon/Lpx/JD_remove_ads.lpx
+    
+  - name: 京东外卖去广告
+    url: https://kelee.one/Tool/Loon/Lpx/JDWaimai_remove_ads.lpx
+    
+  - name: 闲鱼去广告
+    url: https://kelee.one/Tool/Loon/Lpx/FleaMarket_remove_ads.lpx
+    
+  - name: 贝壳找房去广告
+    url: https://kelee.one/Tool/Loon/Lpx/Beike_remove_ads.lpx
+
+  # ========== 工具效率 ==========
+  - name: 百度网盘去广告
+    url: https://kelee.one/Tool/Loon/Lpx/BaiduNetDisk_remove_ads.lpx
+    
+  - name: 百度搜索去广告
+    url: https://kelee.one/Tool/Loon/Lpx/BaiduSearchWebpage_remove_ads.lpx
+    
+  - name: 12306去广告
+    url: https://kelee.one/Tool/Loon/Lpx/12306_remove_ads.lpx
+    
+  - name: 滴滴出行去广告
+    url: https://kelee.one/Tool/Loon/Lpx/DiDi_remove_ads.lpx
+    
+  - name: 瑞幸咖啡去广告
+    url: https://kelee.one/Tool/Loon/Lpx/LuckinCoffee_remove_ads.lpx
+
+  # ========== 其他 ==========
+  - name: 虎牙(河马)去广告
+    url: https://kelee.one/Tool/Loon/Lpx/MrHema_remove_ads.lpx
+    
+  - name: 酷安去广告
+    url: https://kelee.one/Tool/Loon/Lpx/CoolApk_remove_ads.lpx
+    
+  - name: 小米音箱去广告
+    url: https://kelee.one/Tool/Loon/Lpx/XiaomiSpeaker_remove_ads.lpx
+    
+  - name: 掌阅去广告
+    url: https://kelee.one/Tool/Loon/Lpx/DragonRead_remove_ads.lpx
