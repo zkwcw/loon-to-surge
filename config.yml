@@ -87,12 +87,10 @@ plugins:
   - name: 小米音箱去广告
     url: https://kelee.one/Tool/Loon/Lpx/XiaomiSpeaker_remove_ads.lpx
     
-  - name: 掌阅去广告
+  - name: 番茄小说去广告
     url: https://kelee.one/Tool/Loon/Lpx/DragonRead_remove_ads.lpx
     
   # ========== 社交平台 ==========
-  - name: Tumblr去广告
-    url: https://kelee.one/Tool/Loon/Lpx/Tumblr_remove_ads.lpx
     
   - name: 百度贴吧去广告
     url: https://kelee.one/Tool/Loon/Lpx/Tieba_remove_ads.lpx
