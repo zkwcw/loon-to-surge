@@ -36,6 +36,7 @@
 | 26 | 小米音箱去广告 | [安装](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/小米音箱去广告.sgmodule) |
 | 27 | 掌阅去广告 | [安装](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/掌阅去广告.sgmodule) |
 | 28 | Tumblr去广告 | [安装](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/Tumblr去广告.sgmodule) |
+| 29 | 百度贴吧去广告 | [安装](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/百度贴吧去广告.sgmodule) |
 
 ## 🔄 更新频率
 
