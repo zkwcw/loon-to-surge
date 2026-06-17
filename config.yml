@@ -89,3 +89,7 @@ plugins:
     
   - name: 掌阅去广告
     url: https://kelee.one/Tool/Loon/Lpx/DragonRead_remove_ads.lpx
+    
+  # ========== 社交平台 ==========
+  - name: Tumblr去广告
+    url: https://kelee.one/Tool/Loon/Lpx/Tumblr_remove_ads.lpx
