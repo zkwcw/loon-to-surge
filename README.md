@@ -16,9 +16,6 @@
 ### QQ重定向
 [安装链接](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/QQ重定向.sgmodule)
 
-### YouTube去广告
-[安装链接](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/YouTube去广告.sgmodule)
-
 ### 京东去广告
 [安装链接](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/京东去广告.sgmodule)
 

@@ -37,9 +37,8 @@ plugins:
     url: https://kelee.one/Tool/Loon/Lpx/RedPaper_remove_ads.lpx
 
   # ========== 视频娱乐 ==========
-  - name: YouTube去广告
-    url: https://kelee.one/Tool/Loon/Lpx/YouTube_remove_ads.lpx
-    
+
+
 
 
   # ========== 购物生活 ==========
