@@ -55,9 +55,6 @@
 ### 番茄小说去广告
 [安装链接](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/番茄小说去广告.sgmodule)
 
-### 百度搜索去广告
-[安装链接](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/百度搜索去广告.sgmodule)
-
 ### 百度网盘去广告
 [安装链接](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/百度网盘去广告.sgmodule)
 

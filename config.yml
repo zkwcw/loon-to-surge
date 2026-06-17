@@ -61,9 +61,6 @@ plugins:
   - name: 百度网盘去广告
     url: https://kelee.one/Tool/Loon/Lpx/BaiduNetDisk_remove_ads.lpx
     
-  - name: 百度搜索去广告
-    url: https://kelee.one/Tool/Loon/Lpx/BaiduSearchWebpage_remove_ads.lpx
-    
   - name: 12306去广告
     url: https://kelee.one/Tool/Loon/Lpx/12306_remove_ads.lpx
     
