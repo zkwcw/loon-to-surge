@@ -35,6 +35,7 @@
 | 23 | 番茄小说去广告 | [安装](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/番茄小说去广告.sgmodule) |
 | 24 | 百度贴吧去广告 | [安装](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/百度贴吧去广告.sgmodule) |
 | 25 | 拼多多去广告 | [安装](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/拼多多去广告.sgmodule) |
+| 26 | 香港抖音去广告 | [安装](https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/modules/香港抖音去广告.sgmodule) |
 
 ## 🔄 更新频率
 

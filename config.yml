@@ -91,3 +91,7 @@ plugins:
   # ========== 手动新增 ==========
   - name: 拼多多去广告
     url: https://kelee.one/Tool/Loon/Lpx/PinDuoDuo_remove_ads.lpx
+
+  # ========== 手动新增 ==========
+  - name: 香港抖音去广告
+    url: https://kelee.one/Tool/Loon/Lpx/HKDouYin_remove_ads.lpx
