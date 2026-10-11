@@ -95,3 +95,7 @@ plugins:
   # ========== 手动新增 ==========
   - name: 香港抖音去广告
     url: https://kelee.one/Tool/Loon/Lpx/HKDouYin_remove_ads.lpx
+
+  # ========== 手动新增 ==========
+  - name: 高德地图去广告
+    url: https://kelee.one/Tool/Loon/Lpx/Amap_remove_ads.lpx
