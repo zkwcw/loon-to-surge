@@ -1,6 +1,5 @@
 #!name=放行关键 HTTPDNS
-#!desc=放行京东/微信/美团的 HTTPDNS 与京东 API 的 IP，避免 App 解析被 HTTPDNS拦截器 拦死导致打开变慢。启用顺序：先启用 HTTPDNS拦截器，最后启用本模块。
-#!system=ios,mac
+#!desc=放行京东/微信/美团的 HTTPDNS 与京东 API 的 IP，避免被 HTTPDNS拦截器 拦死导致 App 打开变慢。启用顺序：先启用 HTTPDNS拦截器，最后启用本模块。
 
 [Rule]
 DOMAIN,dns.jd.com,DIRECT
