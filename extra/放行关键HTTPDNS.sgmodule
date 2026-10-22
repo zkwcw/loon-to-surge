@@ -1,0 +1,11 @@
+#!name=放行关键 HTTPDNS
+#!desc=放行京东/微信/美团的 HTTPDNS 与京东 API 的 IP，避免 App 解析被 HTTPDNS拦截器 拦死导致打开变慢。启用顺序：先启用 HTTPDNS拦截器，最后启用本模块。
+#!system=ios,mac
+
+[Rule]
+DOMAIN,dns.jd.com,DIRECT
+IP-CIDR,101.124.19.122/32,DIRECT,no-resolve
+DOMAIN,dns.weixin.qq.com.cn,DIRECT
+DOMAIN,aedns.weixin.qq.com,DIRECT
+DOMAIN,httpdns.meituan.com,DIRECT
+DOMAIN,httpdnsmultiapi.meituan.com,DIRECT
