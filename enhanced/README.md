@@ -22,25 +22,27 @@
 
 ### 安装
 
-`raw.githubusercontent.com` 在国内时通时断，**优先用 jsDelivr**：
+**主用 GitHub raw：**
 
 ```
-https://cdn.jsdelivr.net/gh/zkwcw/loon-to-surge@main/enhanced/xianyu-enhanced.sgmodule
+https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/enhanced/xianyu-enhanced.sgmodule
 ```
 
 一键安装：
 
 ```
-surge:///install-module?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fzkwcw%2Floon-to-surge%40main%2Fenhanced%2Fxianyu-enhanced.sgmodule
+surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fzkwcw%2Floon-to-surge%2Fmain%2Fenhanced%2Fxianyu-enhanced.sgmodule
 ```
 
-备用镜像（jsDelivr 不通时）：`fastly.jsdelivr.net` / `gcore.jsdelivr.net`，路径相同。
+> `raw.githubusercontent.com` 在部分网络下时通时断（表现为 Surge 报「DNS 解析失败或 URL 无效」）。装的时候确保 Surge 处于已连接状态（GitHub 规则会走代理），失败就隔一会儿重试。
 
-> jsDelivr 对 `@main` 分支有最长约 12 小时缓存。推送新版本后执行下面这条刷新缓存，用户端才会立刻拿到新版：
-> ```
-> curl "https://purge.jsdelivr.net/gh/zkwcw/loon-to-surge@main/enhanced/xianyu-enhanced.sgmodule"
-> ```
-> 临时绕过缓存可用 commit hash：`.../loon-to-surge@<commit>/enhanced/xianyu-enhanced.sgmodule`
+**临时替代镜像**（GitHub 完全不通时用，内容与 GitHub 一致）：
+
+```
+https://cdn.jsdelivr.net/gh/zkwcw/loon-to-surge@main/enhanced/xianyu-enhanced.sgmodule
+https://fastly.jsdelivr.net/gh/zkwcw/loon-to-surge@main/enhanced/xianyu-enhanced.sgmodule
+https://gcore.jsdelivr.net/gh/zkwcw/loon-to-surge@main/enhanced/xianyu-enhanced.sgmodule
+```
 
 ### 可选：拦截广告上报接口
 
