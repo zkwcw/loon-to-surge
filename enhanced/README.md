@@ -36,6 +36,12 @@ surge:///install-module?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fzkwcw%2Floon-t
 
 备用镜像（jsDelivr 不通时）：`fastly.jsdelivr.net` / `gcore.jsdelivr.net`，路径相同。
 
+> jsDelivr 对 `@main` 分支有最长约 12 小时缓存。推送新版本后执行下面这条刷新缓存，用户端才会立刻拿到新版：
+> ```
+> curl "https://purge.jsdelivr.net/gh/zkwcw/loon-to-surge@main/enhanced/xianyu-enhanced.sgmodule"
+> ```
+> 临时绕过缓存可用 commit hash：`.../loon-to-surge@<commit>/enhanced/xianyu-enhanced.sgmodule`
+
 ### 可选：拦截广告上报接口
 
 文件末尾有两条**注释掉**的 Map Local 规则，作用于：
