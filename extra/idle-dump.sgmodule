@@ -1,0 +1,8 @@
+#!name=闲鱼诊断-抓取响应体
+#!desc=临时诊断模块：把闲鱼相关 mtop 接口的响应体回传到局域网接收端，不修改任何响应。诊断完成后请删除本模块。
+
+[Script]
+idle-dump = type=http-response,pattern=^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.(taobao\.idle\.rule\.config|idle\.idleadv|taobao\.idlehome|taobao\.idlemtopsearch),requires-body=1,max-size=0,debug=0,script-path=https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/extra/idle-dump.js
+
+[MITM]
+hostname = %APPEND% acs.m.goofish.com
