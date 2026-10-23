@@ -6,7 +6,7 @@
 #!category=去广告
 #!loon_version=3.5.1(998)
 #!homepage=https://hub.kelee.one
-#!date=2026-10-24 00:45:00
+#!date=2026-10-24 00:55:00
 
 [Script]
 # 临时诊断：把闲鱼 mtop 响应体回传到局域网 Mac（不修改响应）。诊断完成后删除本行即可。
