@@ -6,10 +6,10 @@
 #!category=去广告
 #!loon_version=3.5.1(998)
 #!homepage=https://hub.kelee.one
-#!date=2026-10-24 01:05:00
+#!date=2026-10-24 01:15:00
 
 [Script]
-idle-dump = type=http-response,pattern=goofish\.com\/gw\/mtop,requires-body=true,script-path=https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/extra/idle-dump.js
+idle-dump = type=http-response,pattern=goofish\.com\/gw\/mtop,requires-body=true,script-path=https://cdn.jsdelivr.net/gh/zkwcw/loon-to-surge@main/extra/idle-dump.js
 
 [Body Rewrite]
 http-response-jq (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/ '.data.homeTopList |= map(select(.sectionType == "kingkongDo")) | .data.sections |= map(select(.data.clickParam.args.cardType as $ct | $ct != "homeMultiBanner" and $ct != "mamaAD")) | .data.sections |= map(select((.template.name|type=="string")and(.template.name=="idlefish_home_new_commodity_card"or(.template.name|contains("fish_home_tags_item_card")))))'
