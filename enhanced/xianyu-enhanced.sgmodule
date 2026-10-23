@@ -1,13 +1,46 @@
-#!name=闲鱼去广告-增强
-#!desc=[增强版] MITM 扩到 *.goofish.com + 追加广告联盟域名 REJECT；移除开屏广告、商品信息流广告、关注推荐、搜索栏填充词、首页签到入口及悬浮广告，精简我的页面。
-#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!name=闲鱼去广告（增强版）
+#!desc=移除开屏广告、信息流广告、关注推荐、搜索栏填充词、首页签到与悬浮广告，精简「我的」页；MITM 覆盖 *.goofish.com，并拦截阿里广告联盟域名。
+#!author=基线规则：可莉🅥 https://github.com/luestr/ProxyResource ｜ 增强维护：zkwcw https://github.com/zkwcw/loon-to-surge
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/FleaMarket.png
 #!openUrl=https://apps.apple.com/app/id510909506
 #!category=去广告
-#!loon_version=3.5.1(998)
-#!homepage=https://hub.kelee.one
-#!date=2026-10-24 01:20:00
+#!homepage=https://github.com/zkwcw/loon-to-surge
+#!date=2026-10-24 01:30:00
+#
+# ══════════════════════════════════════════════════════════════════
+#  闲鱼去广告 · 增强版
+#  基线：可莉 FleaMarket_remove_ads（2026-10-02）的 17 条 Body Rewrite + 7 条 Map Local，原样保留
+#  相对基线的三处增强：
+#    1) MITM 从 2 个域名扩到 *.goofish.com —— 防止接口换子域绕过改写
+#    2) [Rule] 追加阿里广告联盟域名 REJECT（tanx / alimama / amdc / adash / danuoyi / mmstat）
+#    3) [Rule] 顺带止噪：三个长期重试超时的第三方域名
+#  与上游自动转换版 modules/闲鱼去广告.sgmodule 二选一启用，不要同时开
+# ══════════════════════════════════════════════════════════════════
 
+[MITM]
+hostname = %APPEND% *.goofish.com
+
+# ─────────────────────────────────────────────────────────────
+# 域名层拦截：阿里广告联盟 / 投放 / 统计（这些不是闲鱼自有域名）
+# ─────────────────────────────────────────────────────────────
+[Rule]
+# 阿里妈妈投放 / 阿里广告 CDN（日志里 101.37.12.98、8.129.43.221 归属 Hangzhou Alibaba Advertising）
+DOMAIN,amdc.m.taobao.com,REJECT
+DOMAIN,adash.m.taobao.com,REJECT
+DOMAIN,adashbc.ut.taobao.com,REJECT
+DOMAIN-SUFFIX,danuoyi.alicdn.com,REJECT
+DOMAIN-SUFFIX,alimama.com,REJECT
+DOMAIN-SUFFIX,tanx.com,REJECT
+# 阿里统计/埋点（如误伤可删掉这一行）
+DOMAIN-SUFFIX,mmstat.com,REJECT
+# 日志里 26 小时每 8 分钟重试一轮、始终超时的第三方域（先止噪，归属待确认）
+DOMAIN-SUFFIX,qiezibenpao.com,REJECT
+DOMAIN-SUFFIX,comfylink.com,REJECT
+DOMAIN-SUFFIX,tianwenca.com,REJECT
+
+# ─────────────────────────────────────────────────────────────
+# 响应体改写：按 mtop 接口逐个清洗首页/搜索/详情里的广告卡片
+# ─────────────────────────────────────────────────────────────
 [Body Rewrite]
 http-response-jq (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/ '.data.homeTopList |= map(select(.sectionType == "kingkongDo")) | .data.sections |= map(select(.data.clickParam.args.cardType as $ct | $ct != "homeMultiBanner" and $ct != "mamaAD")) | .data.sections |= map(select((.template.name|type=="string")and(.template.name=="idlefish_home_new_commodity_card"or(.template.name|contains("fish_home_tags_item_card")))))'
 http-response-jq (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.widget\.refresh\.get\/ '.data.homeTopList |= map(select(.sectionType == "kingkongDo"))'
@@ -27,35 +60,22 @@ http-response-jq (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtop
 http-response-jq (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ '.data.cardList |= map(if has("cardData") and (.cardData | has("hotwords")) then .cardData |= del(.hotwords) else . end)'
 http-response-jq (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.trade\.full\.info\/ '.data.components |= map(select(.render | . == "orderStatusVO" or . == "addressInfoVO" or . == "orderInfoVO"))'
 
+# ─────────────────────────────────────────────────────────────
+# 整体置空：这些接口返回的内容本身就是广告/推荐位
+# ─────────────────────────────────────────────────────────────
 [Map Local]
 (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlecommerce\.splash\.ads\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
-
 (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
-
 (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.recommend\.list\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
-
 (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.local\.near\.by\.corner\.info\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
-
 (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.buy\.feeds\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
-
 (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
-
 (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.playboy\.recommend\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
-[MITM]
-hostname = %APPEND% *.goofish.com
+# ─────────────────────────────────────────────────────────────
+# 可选：广告上报 / 场景恢复接口（默认不启用）
+# 说明：这两个接口只做广告曝光回执，拦掉不影响界面；长期可能降低开屏广告填充率。
+# 启用方式：复制到 [Map Local] 段并把行首的 '# ' 去掉
+# (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.idleadv\.app\.launch\.report\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+# (?i)^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.idleadv\.scene\.restore\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
-[Rule]
-# 阿里妈妈投放 / 阿里广告 CDN（日志里 101.37.12.98、8.129.43.221 归属 Hangzhou Alibaba Advertising）
-DOMAIN,amdc.m.taobao.com,REJECT
-DOMAIN,adash.m.taobao.com,REJECT
-DOMAIN,adashbc.ut.taobao.com,REJECT
-DOMAIN-SUFFIX,danuoyi.alicdn.com,REJECT
-DOMAIN-SUFFIX,alimama.com,REJECT
-DOMAIN-SUFFIX,tanx.com,REJECT
-# 阿里统计/埋点（如误伤可删掉这一行）
-DOMAIN-SUFFIX,mmstat.com,REJECT
-# 日志里 26 小时每 8 分钟重试一轮、始终超时的第三方域（先止噪，归属待确认）
-DOMAIN-SUFFIX,qiezibenpao.com,REJECT
-DOMAIN-SUFFIX,comfylink.com,REJECT
-DOMAIN-SUFFIX,tianwenca.com,REJECT
