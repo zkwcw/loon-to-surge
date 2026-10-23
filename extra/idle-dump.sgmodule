@@ -2,7 +2,7 @@
 #!desc=Temporary diagnostic: forward Xianyu mtop response body to a LAN receiver. It does NOT modify any response. Remove this module after diagnosis.
 
 [Script]
-idle-dump = type=http-response,pattern=^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.rule\.config,requires-body=1,max-size=1048576,script-path=https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/extra/idle-dump.js
+idle-dump = type=http-response,pattern=^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.,requires-body=1,max-size=1048576,script-path=https://raw.githubusercontent.com/zkwcw/loon-to-surge/main/extra/idle-dump.js
 
 [MITM]
 hostname = %APPEND% acs.m.goofish.com
